@@ -1,5 +1,6 @@
 package com.kevin.bmicalc;
 
+import android.icu.text.DecimalFormat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
                 float height = Float.parseFloat(String.valueOf(editTextHeight.getText())) / 100;
                 float weight = Float.parseFloat(String.valueOf(editTextWeight.getText()));
                 float bmi = weight / (height * height);
-                textView.setText(String.valueOf("BMI = "+bmi));
+                DecimalFormat df = new DecimalFormat();
+                df.setMaximumFractionDigits(2);
+                textView.setText(String.valueOf("BMI = "+df.format(bmi)));
             }
         });
     }
